@@ -1,131 +1,125 @@
+<!-- Funny portfolio demo
+   - Edit the image by clicking Change picture
+   - Or replace the src in the HTML
+-->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Funny Portfolio Demo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bulok gi Open!</title>
   <style>
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --accent:#ffb86b;
-      --muted:#98a0b3;
-      --glass: rgba(255,255,255,0.03);
-    }
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:#e6eef8;background:linear-gradient(180deg,#071026 0%,var(--bg) 100%)}
-    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
-    .card{width:960px;max-width:96%;background:linear-gradient(180deg,var(--card),#07101a);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:260px 1fr;gap:20px}
-    .avatar{height:200px;background:linear-gradient(135deg,var(--accent),#ffd9a8);border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .face{width:140px;height:140px;border-radius:20px;background:white;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b1220;font-size:28px;box-shadow:0 6px 18px rgba(0,0,0,0.3)}
-    .face .eye{width:16px;height:16px;border-radius:50%;background:#0b1220;position:absolute;left:38px;top:70px}
-    .face .eye.r{left:86px}
-    .face .smile{position:absolute;bottom:36px;width:60px;height:18px;border-bottom:6px solid #0b1220;border-radius:0 0 30px 30px}
-    .bio{color:var(--muted);padding-top:8px;font-size:14px}
-    h1{margin:0;font-size:22px;color:#fff}
-    .role{color:var(--accent);margin-top:6px;font-weight:600}
-    .skills{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
-    .main{padding:6px 10px}
-    .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-    .proj{background:#071428;padding:12px;border-radius:10px;min-height:110px;color:#dfe9fb;display:flex;flex-direction:column;justify-content:space-between}
-    .proj h3{margin:0;font-size:16px}
-    .proj p{margin:6px 0 0 0;font-size:13px;color:var(--muted)}
-    .cta{display:flex;gap:10px;margin-top:16px}
-    .btn{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-    .btn.gray{background:#0b1220;color:var(--accent);border:1px solid rgba(255,184,107,0.12)}
-    footer{grid-column:1/-1;margin-top:18px;color:var(--muted);font-size:13px}
-    /* silly floating sticker */
-    .sticker{position:absolute;right:14px;top:14px;background:#fff;color:#0b1220;padding:6px 8px;border-radius:10px;font-weight:700;transform:rotate(-12deg);box-shadow:0 6px 18px rgba(2,6,23,0.4)}
-    /* tiny animation */
-    @keyframes wiggle{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
-    .face{animation:wiggle 2400ms infinite}
-    @media(max-width:720px){.card{grid-template-columns:1fr;align-items:center}.avatar{height:150px}.face{width:120px;height:120px}}
+    :root{--bg:#0f1724;--card:#111827;--accent:#f59e0b;--muted:#94a3b8}
+    body{font-family:Inter,system-ui,Segoe UI,Arial;margin:0;padding:40px;background:linear-gradient(180deg,#061021 0%, #071428 100%);color:#e6eef6}
+    .wrap{max-width:860px;margin:0 auto}
+    .card{background:rgba(255,255,255,0.03);padding:28px;border-radius:14px;display:flex;gap:24px;align-items:center}
+    .avatar{width:160px;height:160px;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,0.04);flex:0 0 160px;display:flex;align-items:center;justify-content:center}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta{flex:1}
+    h1{margin:0 0 8px 0;font-size:22px}
+    p.role{margin:0;color:var(--muted)}
+    .controls{margin-top:14px;display:flex;gap:8px}
+    .btn{background:var(--accent);color:#08101a;padding:8px 12px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+    .btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04)}
+    .bio{margin-top:16px;color:#cfe3ff}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .card-mini{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;text-align:center}
+    .small{font-size:13px;color:var(--muted)}
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+    /* responsive */
+    @media (max-width:640px){.card{flex-direction:column;align-items:flex-start}.avatar{width:120px;height:120px}}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card" role="region" aria-label="Funny portfolio demo">
-      <div>
-        <div class="avatar">
-          <div class="face" id="face">
-            <div class="eye"></div>
-            <div class="eye r"></div>
-            <div class="smile"></div>
-            <div style="position:absolute;bottom:8px;font-size:12px;color:#0b1220;">HELLO</div>
-          </div>
-          <div class="sticker">Available</div>
-        </div>
-        <div style="margin-top:12px">
-          <h1>Ded the Developer</h1>
-          <div class="role">Software, memes, coffee</div>
-          <div class="bio">I build tidy apps. I break them to learn. I fix them at 3am.</div>
-          <div class="skills">
-            <div class="chip">HTML</div>
-            <div class="chip">CSS</div>
-            <div class="chip">JS</div>
-            <div class="chip">SQL</div>
-            <div class="chip">Debugging</div>
-            <div class="chip">Singing to code</div>
-          </div>
-          <div class="cta">
-            <button class="btn" id="hire">Hire me</button>
-            <button class="btn gray" id="portfolio">Weird projects</button>
-          </div>
-        </div>
+    <div class="card">
+      <div class="avatar" id="avatarWrap">
+        <img id="profilePic" src="deb.jpg" alt="Profile picture" />
       </div>
-      <div class="main">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="color:var(--muted)">Selected projects</div>
-          <div style="font-size:13px;color:var(--accent);font-weight:700">0 bugs pending</div>
+      <div class="meta">
+        <h1 id="name">Debi D. Makatulog</h1>
+        <p class="role" id="role">Full Tank Build Developer😘</p>
+
+        <div class="controls">
+          <label class="btn" title="Change picture">
+            Change picture
+            <input id="fileInput" type="file" accept="image/*" style="display:none" />
+          </label>
+          <button class="btn ghost" id="randomBtn">Suprise Madafaka!</button>
+          <button class="btn ghost" id="resetBtn">Reset Part!</button>
         </div>
-        <div style="height:12px"></div>
-        <div class="projects">
-          <div class="proj">
-            <div>
-              <h3>Auto Coffee Maker</h3>
-              <p>Brews code while you sleep. Sometimes it brews errors.</p>
-            </div>
-            <div style="font-size:12px;color:var(--muted)">HTML, JS, patience</div>
+
+        <p class="bio" id="bio">Batak mo saksak ug FLASHDRIVE!!!</p>
+
+        <div class="grid">
+          <div class="card-mini">
+            <div class="small">Projects</div>
+            <div style="font-weight:700">Deadliner</div>
           </div>
-          <div class="proj">
-            <div>
-              <h3>Bug Tracker 9000</h3>
-              <p>Finds bugs, hides them, files a report to HR.</p>
-            </div>
-            <div style="font-size:12px;color:var(--muted)">Node, sass, therapy</div>
+          <div class="card-mini">
+            <div class="small">Programming Language</div>
+            <div style="font-weight:700">ChatGPT-5</div>
           </div>
-          <div class="proj">
-            <div>
-              <h3>Meme Generator</h3>
-              <p>Turns deadlines into jokes. Works on Friday.</p>
-            </div>
-            <div style="font-size:12px;color:var(--muted)">Canvas, grief</div>
+          <div class="card-mini">
+            <div class="small">Wana ko kaybaw unsay akong ibutang dri</div>
+            <div style="font-weight:700">CopyPaste</div>
           </div>
         </div>
-        <footer>
-          Want to see source? Click view source. It is messy but honest.
-        </footer>
+
       </div>
     </div>
+
+    <footer>
+      Shesshhhhhhhh..........
+    </footer>
   </div>
+
   <script>
-    document.getElementById('hire').addEventListener('click',function(){
-      var name = prompt('Your name') || 'Friend'
-      alert('Nice to meet you, ' + name + '. I accept snacks as payment.')
-    })
-    document.getElementById('portfolio').addEventListener('click',function(){
-      alert('Loading weird projects. Warning, may contain glitter.')
-    })
-    // silly eye follow
-    const face = document.getElementById('face')
-    document.addEventListener('mousemove',function(e){
-      const r = face.getBoundingClientRect()
-      const cx = r.left + r.width / 2
-      const cy = r.top + r.height / 2
-      const dx = (e.clientX - cx) / 40
-      const dy = (e.clientY - cy) / 40
-      face.style.transform = `translate(${dx}px, ${dy}px)`
-    })
+    const profilePic = document.getElementById('profilePic');
+    const fileInput = document.getElementById('fileInput');
+    const randomBtn = document.getElementById('randomBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    const originalSrc = profilePic.src;
+
+    fileInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        profilePic.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    randomBtn.addEventListener('click', () => {
+      // a small set of funny images you can replace or expand
+      const pool = [
+        '1.jpeg',
+        '2.jpg',
+        '3.jpeg',
+        '4.jpeg'
+      ];
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      profilePic.src = pick;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      profilePic.src = originalSrc;
+      fileInput.value = '';
+    });
+
+    // optional: drag drop on avatar
+    const avatarWrap = document.getElementById('avatarWrap');
+    avatarWrap.addEventListener('dragover', e => { e.preventDefault(); });
+    avatarWrap.addEventListener('drop', e => {
+      e.preventDefault();
+      const file = e.dataTransfer.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => { profilePic.src = ev.target.result; };
+      reader.readAsDataURL(file);
+    });
   </script>
 </body>
 </html>
