@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Funny Portfolio Demo</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#ffb86b;
+      --muted:#98a0b3;
+      --glass: rgba(255,255,255,0.03);
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:#e6eef8;background:linear-gradient(180deg,#071026 0%,var(--bg) 100%)}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
+    .card{width:960px;max-width:96%;background:linear-gradient(180deg,var(--card),#07101a);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:260px 1fr;gap:20px}
+    .avatar{height:200px;background:linear-gradient(135deg,var(--accent),#ffd9a8);border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .face{width:140px;height:140px;border-radius:20px;background:white;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b1220;font-size:28px;box-shadow:0 6px 18px rgba(0,0,0,0.3)}
+    .face .eye{width:16px;height:16px;border-radius:50%;background:#0b1220;position:absolute;left:38px;top:70px}
+    .face .eye.r{left:86px}
+    .face .smile{position:absolute;bottom:36px;width:60px;height:18px;border-bottom:6px solid #0b1220;border-radius:0 0 30px 30px}
+    .bio{color:var(--muted);padding-top:8px;font-size:14px}
+    h1{margin:0;font-size:22px;color:#fff}
+    .role{color:var(--accent);margin-top:6px;font-weight:600}
+    .skills{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .main{padding:6px 10px}
+    .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .proj{background:#071428;padding:12px;border-radius:10px;min-height:110px;color:#dfe9fb;display:flex;flex-direction:column;justify-content:space-between}
+    .proj h3{margin:0;font-size:16px}
+    .proj p{margin:6px 0 0 0;font-size:13px;color:var(--muted)}
+    .cta{display:flex;gap:10px;margin-top:16px}
+    .btn{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .btn.gray{background:#0b1220;color:var(--accent);border:1px solid rgba(255,184,107,0.12)}
+    footer{grid-column:1/-1;margin-top:18px;color:var(--muted);font-size:13px}
+    /* silly floating sticker */
+    .sticker{position:absolute;right:14px;top:14px;background:#fff;color:#0b1220;padding:6px 8px;border-radius:10px;font-weight:700;transform:rotate(-12deg);box-shadow:0 6px 18px rgba(2,6,23,0.4)}
+    /* tiny animation */
+    @keyframes wiggle{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    .face{animation:wiggle 2400ms infinite}
+    @media(max-width:720px){.card{grid-template-columns:1fr;align-items:center}.avatar{height:150px}.face{width:120px;height:120px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Funny portfolio demo">
+      <div>
+        <div class="avatar">
+          <div class="face" id="face">
+            <div class="eye"></div>
+            <div class="eye r"></div>
+            <div class="smile"></div>
+            <div style="position:absolute;bottom:8px;font-size:12px;color:#0b1220;">HELLO</div>
+          </div>
+          <div class="sticker">Available</div>
+        </div>
+        <div style="margin-top:12px">
+          <h1>Ded the Developer</h1>
+          <div class="role">Software, memes, coffee</div>
+          <div class="bio">I build tidy apps. I break them to learn. I fix them at 3am.</div>
+          <div class="skills">
+            <div class="chip">HTML</div>
+            <div class="chip">CSS</div>
+            <div class="chip">JS</div>
+            <div class="chip">SQL</div>
+            <div class="chip">Debugging</div>
+            <div class="chip">Singing to code</div>
+          </div>
+          <div class="cta">
+            <button class="btn" id="hire">Hire me</button>
+            <button class="btn gray" id="portfolio">Weird projects</button>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="color:var(--muted)">Selected projects</div>
+          <div style="font-size:13px;color:var(--accent);font-weight:700">0 bugs pending</div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="projects">
+          <div class="proj">
+            <div>
+              <h3>Auto Coffee Maker</h3>
+              <p>Brews code while you sleep. Sometimes it brews errors.</p>
+            </div>
+            <div style="font-size:12px;color:var(--muted)">HTML, JS, patience</div>
+          </div>
+          <div class="proj">
+            <div>
+              <h3>Bug Tracker 9000</h3>
+              <p>Finds bugs, hides them, files a report to HR.</p>
+            </div>
+            <div style="font-size:12px;color:var(--muted)">Node, sass, therapy</div>
+          </div>
+          <div class="proj">
+            <div>
+              <h3>Meme Generator</h3>
+              <p>Turns deadlines into jokes. Works on Friday.</p>
+            </div>
+            <div style="font-size:12px;color:var(--muted)">Canvas, grief</div>
+          </div>
+        </div>
+        <footer>
+          Want to see source? Click view source. It is messy but honest.
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('hire').addEventListener('click',function(){
+      var name = prompt('Your name') || 'Friend'
+      alert('Nice to meet you, ' + name + '. I accept snacks as payment.')
+    })
+    document.getElementById('portfolio').addEventListener('click',function(){
+      alert('Loading weird projects. Warning, may contain glitter.')
+    })
+    // silly eye follow
+    const face = document.getElementById('face')
+    document.addEventListener('mousemove',function(e){
+      const r = face.getBoundingClientRect()
+      const cx = r.left + r.width / 2
+      const cy = r.top + r.height / 2
+      const dx = (e.clientX - cx) / 40
+      const dy = (e.clientY - cy) / 40
+      face.style.transform = `translate(${dx}px, ${dy}px)`
+    })
+  </script>
+</body>
+</html>
